@@ -1,0 +1,15 @@
+<input type="file" accept="image/*" style="display: none"
+  #fileInput (change)="onFileChanged($event)" />
+  
+<div class="box" (click)="onBoxTouched()">
+  
+    <ion-icon *ngIf="valorImagen ==null" name="camera" color="medium"></ion-icon>
+  
+  <div *ngIf="valorImagen!=null">
+    <img src={{valorImagen}}/>
+  </div>
+ 
+  <ion-spinner *ngIf="isUploading"></ion-spinner>
+ 
+  <div >{{ text }}</div>
+</div>

@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'PAYMENT' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onAddButtonTouched()">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #container scrollEvents="true">
+
+  <ion-refresher slot="fixed" >
+    <ion-refresher-content pullingText="{{ 'PULL_TO_REFRESH' | translate }}"
+      refreshingText="{{ 'REFRESHING' | translate }}">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid fixed>
+
+    <empty-view *ngIf="isErrorViewVisible" icon="alert-circle-outline" [text]="'ERROR_DATA' | translate">
+    </empty-view>
+
+    <empty-view *ngIf="panel==false" image="./assets/imgs/undraw_add_to_cart_vkjp.svg" imageWidth="120"
+      [text]="'CART_EMPTY' | translate">
+    </empty-view>
+
+    <ion-row class="ion-justify-content-center" *ngIf="panel==true">
+      <ion-col size-xs="12" size-lg="9">
+        <ion-list lines="none" class="ion-margin-top" *ngFor="let user of users ; let i = index">
+          <ion-item class="radius ion-margin-bottom" color="light" >
+            
+            <ion-icon name="git-compare"></ion-icon>
+            &nbsp;&nbsp;
+            <ion-label>
+              <p>{{user.name}}</p>
+              <p><b>Distancia: </b> {{user.distanciaM}}</p>
+              <ion-badge class="text-small" color="primary" >
+                {{ 'DEFAULT' | translate }}
+              </ion-badge>
+            </ion-label>
+            <ion-button fill="clear" color="dark" slot="end" (click)="onDeleteAddress(user._id,i)">
+              {{ 'DELETE' | translate }}
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-vertical ion-justify-content-center" *ngIf="isLoadingViewVisible">
+      <ion-col size-xs="12" size-lg="9">
+        <ngx-skeleton-loader count="12" [theme]="{ 'border-radius': '0', height: '70px' }">
+        </ngx-skeleton-loader>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

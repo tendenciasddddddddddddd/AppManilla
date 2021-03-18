@@ -1,0 +1,94 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar fixed>
+    <div slot="start" class="hide-xs-only show-sm-up">
+      <div class="logo">
+        <img src="./assets/imgs/logo123.png" />
+        <h2>Findme</h2>
+      </div>
+    </div>
+
+    <div>
+      <ion-searchbar mode="ios" showCancelButton="never"  placeholder="Buscar Hijo">
+      </ion-searchbar>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #container scrollEvents="true">
+
+ 
+
+  <!-- Autocomplete -->
+
+ 
+   
+  <ion-grid fixed>
+
+    <empty-view *ngIf="isErrorViewVisible" icon="alert-circle-outline" [text]="'ERROR_DATA' | translate">
+    </empty-view>
+
+    <empty-view *ngIf="EndData==true" image="./assets/imgs/undraw_add_to_cart_vkjp.svg" imageWidth="120"
+      [text]="'SIN_DATA' | translate">
+    </empty-view>
+     <br>
+    <ion-row *ngIf="EndData==false">
+      <ion-col size-xs="12" size-lg="8">
+        <ion-list lines="none" inset class="ion-no-padding" >
+          <ion-item class="radius ion-margin-bottom" color="light"  *ngFor="let user of users ; let i = index">
+            <div *ngIf="user.fisrtname==autht">
+                 hola mundo
+            </div>
+            <ion-thumbnail slot="start" style="height:88px; width: 88px;">
+              <img src-fallback="./assets/imgs/avatar.png" [src]="'http://manill-001-site1.btempurl.com/uploads/'+user?.image" />
+               <!-- <img class=""  height="100%" src="./assets/imgs/carla.jpg" alt="First slide" > -->
+            </ion-thumbnail>
+
+            <ion-row class="full-width ion-align-items-center">
+              <ion-col size-xs="12" size-md="9" (click)="onItemTouched(user._id)">
+                <ion-label class="ion-text-wrap">
+                  <p class="link text-normal ellipsis mb-8">{{user.fisrtname}} &nbsp; {{user.lastname}}</p>
+                
+                  <p class="bold">
+                  Edad:  {{user.age}}
+                  </p>
+                </ion-label>
+              </ion-col>
+              <ion-col size-xs="12" size-md="3">
+                <div class="flex align-items-center">
+                  <ion-button fill="clear" color="dark" slot="end" (click)="onDeleteAddress(user._id,i)">
+                    {{ 'DELETE' | translate }}</ion-button>
+                
+                </div>
+              </ion-col>
+            </ion-row>
+
+          </ion-item>
+         
+        </ion-list>
+      </ion-col>
+      <ion-col size-xs="12" size-lg="4">
+        <div class="bg-light radius ion-padding ion-margin">
+         
+          <div class="ion-text-center">
+           
+            <ion-button size="medium" shape="round" color="primary" (click)="onAddButtonTouched()">
+             
+              <span >Agregar Hijo</span>
+            </ion-button>
+            <p class="text-small">Puede registrar todos sus bebes</p>
+         
+          </div>
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+    
+   
+  </ion-grid>
+
+
+
+
+</ion-content>

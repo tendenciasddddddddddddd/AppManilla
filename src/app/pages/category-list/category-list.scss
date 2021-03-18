@@ -1,0 +1,164 @@
+ion-content {
+  --background: var(--ion-color-light);
+}
+
+ion-grid {
+  background: #fff;
+}
+
+ion-searchbar {
+  padding: 0 8px !important;
+}
+
+ion-buttons {
+  align-self: center;
+}
+
+.card {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+
+  .bg-img {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    height: 100%;
+
+    ion-text {
+      z-index: 1;
+    }
+
+    span {
+      background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-tint));
+      border-radius: 16px;
+      padding: 4px 16px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+
+  ion-col {
+    margin: 16px 0;
+  }
+
+}
+
+
+  .item{
+    height:auto;
+  }
+	.amount-block{
+   background-color:red;
+   margin: 0 0 1em 0;
+
+ .right{
+     float:right;
+   }
+    .item{
+      background-color:transparent;
+    }
+    .checkbox .checkbox-checked {
+      border-color: red;
+      background-color: red;
+    }
+     .item-inner{
+        border-bottom:0 !important;
+     }
+     .checkbox{
+        margin: 9px 36px 9px 20px!important;
+     }
+  }
+  
+
+   .booking-block{
+      margin:1em 0;
+
+  .col{
+      padding:0 !important;
+  }
+  .border{
+      border-right: 1px solid;
+      border-color: rgba(0,0,0,0.1);
+  }
+.booking-opt{
+      padding:0;
+      background-color:black;
+  
+  .label{
+     margin-left: 8px;
+       color: white;
+  }
+  .item-inner{
+    border:0;
+  }
+  }
+   .radio .radio-checked {
+    display:none;    
+      }
+      .radio .radio-inner {
+          background-color:blue;   
+     }
+      .radio .radio-icon{
+        display:none;
+      }
+     .item-radio-checked{
+        background-color:blue;
+     }
+}
+  
+  .select-address{
+     .col{
+       padding: 0 15px;
+       border-bottom: 1px solid;
+       border-color: rgba(0,0,0,0.1);
+        .show-address{
+            font-size: 1.5rem;
+            margin: 10px 0;
+           
+        }
+     }          
+     
+  }  
+     .radio .radio-checked {
+          border-color:blue !important;       
+      }
+      .radio .radio-inner {
+          background-color:blue !important;   
+     }    
+    .radio-ios .radio-checked .radio-inner {
+       background-color: transparent !important;
+       border-color: green;
+   }
+   .continue-btn{
+    background-color: green !important;
+   }
+     .warning {
+    color:green;
+    margin-left: 15px;
+  }

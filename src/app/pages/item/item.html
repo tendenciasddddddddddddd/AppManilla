@@ -1,0 +1,158 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar fixed>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+    
+     
+      <ion-button class="btn-share"  >
+        <ion-icon slot="icon-only" name="share"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #container scrollEvents="true">
+
+
+
+  <ion-grid fixed>
+
+    <empty-view *ngIf="isErrorViewVisible" icon="alert-circle-outline" [text]="'ERROR_DATA' | translate">
+    </empty-view>
+
+    <!-- <empty-view *ngIf="isEmptyViewVisible" icon="alert-circle-outline" [text]="'EMPTY_DATA' | translate">
+    </empty-view> -->
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-lg="10">
+       <div >
+
+          <ion-row>
+            <ion-col size-xs="12" size-lg="6">
+              <!-- Slide List -->
+              <div class="border-light ion-padding">
+                <ion-slides class="main" #slides pager gallerize="itemGallery" selector=".bg-img">
+                  <ion-slide >
+                    <img defaultImage="./assets/imgs/avatar.png" [lazyLoad]="'http://manill-001-site1.btempurl.com/uploads/'+addressList.image"
+                    />
+                    <!-- <img class=""  height="100%" src="./assets/imgs/carla.jpg" alt="First slide" > -->
+                  </ion-slide>
+                </ion-slides>
+              </div>
+
+            </ion-col>
+            <ion-col size-xs="12" size-lg="6">
+              <h4>{{addressList.fisrtname}} &nbsp;{{addressList.lastname}} </h4>
+              
+              <div class="ion-padding ion-text-center" >
+                <h3 class="ion-no-margin">
+                  <ion-text color="medium">
+                    {{ 'DESCRIPTION' | translate }}
+                  </ion-text>
+                </h3>
+                <br>
+               
+                <div class="ion-text-justify" ><b>Edad: </b> {{ addressList.age }}</div>
+                <div class="ion-text-justify" > {{ addressList.description }}</div>
+              </div>
+
+              <div>
+                <ion-button class="ion-text-uppercase ion-margin-vertical" strong expand="block" shape="round"
+                  color="primary" (click)="onAddToCart()">
+                 
+                  <span >
+                    Localizar
+                  </span>
+                 
+                </ion-button>
+              </div>
+
+            </ion-col>
+
+          </ion-row>
+          <ion-row class="ion-justify-content-center" *ngIf="panel==true">
+            <ion-col size-xs="12" size-lg="10">
+              <ion-refresher *ngIf="showSpinner === false" (ionRefresh)="refreshBluetooth($event)">
+                <ion-refresher-content refreshingText="{{ 'BLUETOOTH.SEARCHING' | translate }}">
+                </ion-refresher-content>
+              </ion-refresher>
+              <div [hidden]="showSpinner === false" text-center>
+                <ion-spinner></ion-spinner><br>
+                {{ "BLUETOOTH.SEARCHING" | translate }}
+              </div>
+              <ion-list lines="none">
+                <ion-list-header>
+                  <h5>{{ 'LAST_ORDERS' | translate }}</h5>
+                </ion-list-header>
+
+                <ion-item class="radius ion-margin-vertical" color="light" button (click)="checkConnection(device)" *ngFor="let device of pairedList">
+                  <div class="full-width">
+                    <ion-row class="ion-align-items-center">
+                      <ion-col size-xs="12" size-md="9">
+                        <ion-label class="ion-text-wrap">
+                          <p class="link ellipsis text-normal">
+                            {{ "BLUETOOTH.NAME" | translate }}: {{device.name}}
+                          </p>
+                          <ion-text color="primary">
+                            <p class="bold">
+                              <span>{{ "BLUETOOTH.ID" | translate }}: {{device.id}}</span>
+                             
+                            </p>
+                          </ion-text>
+      
+                          <p class="text-small">
+                            <span [hidden]="device.class == undefined">Clase</span>
+                            <span [hidden]="device.rssi == undefined">Rssi</span>
+                            {{device.class}} {{device.rssi}}
+                          </p>
+                        </ion-label>
+                      </ion-col>
+      
+                      <ion-col size-xs="12" size-md="3">
+                        <ion-button shape="round" color="dark">
+                          {{ 'VIEW' | translate }}
+                          <ion-icon slot="end" name="chevron-forward"></ion-icon>
+                        </ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-item>
+      
+              </ion-list>
+              <form >
+                <ion-item>
+                  <ion-input type="text" [(ngModel)]="message" name="message"></ion-input>
+                </ion-item>
+                <ion-row>
+                  <ion-col>
+                    <ion-button expand="block" color="dark" (click)="disconnect()" [disabled]="!isConnected">
+                      {{ "DISCONNECT" | translate }}
+                    </ion-button>
+                  </ion-col>
+                  <ion-col>
+                    <ion-button expand="block" type="submit" [disabled]="!isConnected">
+                      {{ "SEND" | translate }}
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </form>
+              <p *ngFor="let item of messages">{{ item }}</p>
+              <div [hidden]="devices.length > 0 || showSpinner == true || isConnected" text-center>
+                <p>{{ "BLUETOOTH.NOT_FOUND" | translate }}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+         
+
+
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

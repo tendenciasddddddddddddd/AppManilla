@@ -1,0 +1,91 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="onDismiss(null)">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-text color="dark">
+    <h4 class="bold ion-no-margin">
+      {{ 'SHIPPING_INFO' | translate }}
+    </h4>
+    <div class="line"></div>
+  </ion-text>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #form1="ngForm" novalidate>
+    <ion-list lines="none">
+
+     
+   
+  
+
+      <ion-label position="stacked" color="medium">
+        <span>Nombres</span>
+      </ion-label>
+      <ion-item class="ion-margin-vertical" lines="none" color="light">
+        <ion-input type="text" formControlName="fisrtname"></ion-input>
+      </ion-item>
+
+      <ion-label position="stacked" color="medium">
+        <span>Apellidos</span>
+      </ion-label>
+      <ion-item class="ion-margin-vertical" lines="none" color="light">
+        <ion-input type="text" formControlName="lastname"></ion-input>
+      </ion-item>
+
+
+      <ion-label position="stacked" color="medium">
+        <span>Edad</span>
+      </ion-label>
+      <ion-item class="ion-margin-vertical" lines="none" color="light">
+        <ion-input type="text" formControlName="age"></ion-input>
+      </ion-item>
+
+      <ion-label position="stacked" color="medium">
+        <span>Serie de manilla</span>
+      </ion-label>
+      <ion-item class="ion-margin-vertical" lines="none" color="light">
+        <ion-input type="text" formControlName="status"></ion-input>
+      </ion-item>
+      
+      <ion-label position="stacked" color="medium">
+        <span>Descripcion</span>
+      </ion-label>
+      <ion-item class="ion-margin-vertical" lines="none" color="light">
+        <ion-textarea rows="4" formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-label position="stacked" color="medium">
+        <span>{{ 'UPLOAD_PICTURE' | translate }}</span>
+      </ion-label>
+  
+      <div class="ion-margin-vertical">
+        <app-upload-box name="file" (change)="upload($event)">
+          
+        </app-upload-box>
+      </div>
+
+      <ion-item class="ion-margin-vertical" lines="none">
+        <ion-label>
+          <span class="text-medium">
+            {{ 'SET_AS_DEFAULT' | translate }}
+          </span>
+        </ion-label>
+        <ion-checkbox slot="start" formControlName="isDefault"></ion-checkbox>
+      </ion-item>
+     
+    
+      <div>
+        <ion-button type="submit" shape="round" color="primary" strong>
+          {{ 'SAVE' | translate }}
+        </ion-button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar fixed>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'SUPPORT' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12">
+        <div class="flex center align-items-center logo-container ion-text-center">
+          <img class="logo" src="./assets/imgs/logo123.png" width="120">
+          <h1 class="bold">{{ 'APP_NAME' | translate }}</h1>
+          <h3>{{ version }}</h3>
+        </div>
+
+        <ion-row *ngIf="isContentViewVisible">
+
+          <ion-col size-xs="12" size-md="4" class="ion-padding">
+            <div class="ion-text-center ion-text-uppercase">
+              <h5 class="bold">{{ 'ABOUT_US' | translate }}</h5>
+            </div>
+            <div class="text-normal ion-margin-vertical ion-text-justify" style="line-height:1.5">
+              <h4>
+                Findme.Este iniciador viene con un portal de administración, una solución basada en la web donde los propietarios
+                 de las app pueden administrar sus usuarios y
+                 de controles deslizantes.
+              </h4>
+              <br>
+              <h4>
+                Findme.Este iniciador viene con un portal de administración, una solución basada en la web donde los propietarios
+                 de las app pueden administrar sus usuarios y
+                 de controles deslizantes.
+              </h4>
+            </div>
+          </ion-col>
+
+          <ion-col size-xs="12" size-md="4" class="ion-padding" >
+            <div class="ion-text-center ion-text-uppercase">
+              <h5 class="bold">{{ 'HELP' | translate }}</h5>
+            </div>
+            <ion-item style="--background-hover: transparent">
+              <ion-label>
+                <p class="link">Politicas</p>
+              </ion-label>
+            </ion-item>
+            <ion-item style="--background-hover: transparent">
+              <ion-label>
+                <p class="link">Equipos</p>
+              </ion-label>
+            </ion-item>
+            <ion-item style="--background-hover: transparent">
+              <ion-label>
+                <p class="link">Mas</p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size-xs="12" size-md="4" class="ion-padding">
+            <div>
+              <div class="ion-text-center ion-text-uppercase">
+                <h5 class="bold">{{ 'CONTACT_US' | translate }}</h5>
+              </div>
+              <ion-item button  (click)="openUrl('mailto:' + appConfig.about.email)">
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>
+                  <p class="link">10004095632@gmail.com</p>
+                </ion-label>
+              </ion-item>
+              <ion-item button  (click)="openUrl('tel:' + appConfig.about.phone)">
+                <ion-icon name="call" slot="start"></ion-icon>
+                <ion-label>
+                  <p class="link">063013395</p>
+                </ion-label>
+              </ion-item>
+              <ion-item button (click)="openUrl(appConfig.about.facebook)">
+                <ion-icon name="logo-facebook" color="fb" slot="start"></ion-icon>
+                <ion-label>
+                  <p class="link">{{ 'FACEBOOK' | translate }}</p>
+                </ion-label>
+              </ion-item>
+              <ion-item button  (click)="openUrl(appConfig.about.youtube)">
+                <ion-icon name="logo-youtube" color="youtube" slot="start"></ion-icon>
+                <ion-label>
+                  <p class="link">{{ 'YOUTUBE' | translate }}</p>
+                </ion-label>
+              </ion-item>
+              <ion-item button  (click)="openUrl(appConfig.about.instagram)">
+                <ion-icon name="logo-instagram" color="instagram" slot="start"></ion-icon>
+                <ion-label>
+                  <p class="link">{{ 'INSTAGRAM' | translate }}</p>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
